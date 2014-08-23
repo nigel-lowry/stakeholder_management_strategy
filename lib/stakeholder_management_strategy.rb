@@ -2,6 +2,8 @@ require "stakeholder_management_strategy/version"
 
 module StakeholderManagementStrategy
   def self.strategy(power:, interest:)
+    raise if power.nil? or interest.nil?
+
     return :ignore if power == :no and interest == :no
     return :keep_informed if power == :no and (interest == :some or interest == :high)
     return :keep_onside if power == :some
