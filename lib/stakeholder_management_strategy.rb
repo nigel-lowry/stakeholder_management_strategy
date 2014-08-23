@@ -1,5 +1,31 @@
 require "stakeholder_management_strategy/version"
+require 'active_support/all'
 
 module StakeholderManagementStrategy
-  # Your code goes here...
+  @@LEVELS = [:no, :some, :high]
+
+  def self.strategy(power:, interest:)
+    raise unless [power, interest].all? {|dimension| dimension.in? @@LEVELS }
+
+    case power
+      when :high
+        case interest
+          when :no
+            :watch
+          when :some
+            :keep_satisfied
+          when :high
+            :constant_active_management
+        end
+      when :some
+        :keep_onside
+      when :no
+        case interest
+          when :no
+            :ignore
+          else
+            :keep_informed
+        end
+    end
+  end
 end
