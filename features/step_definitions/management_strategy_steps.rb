@@ -1,7 +1,3 @@
-CAPTURE_A_WORD = Transform /^(.*)$/ do |level|
-  level.gsub(/ /, '_').delete(',').downcase.to_sym
-end
-
 Given /^the stakeholder has (#{CAPTURE_A_WORD}) power\/influence$/ do |p|
   @power = p
 end
