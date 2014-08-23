@@ -5,8 +5,7 @@ module StakeholderManagementStrategy
   @@LEVELS = [:no, :some, :high]
 
   def self.strategy(power:, interest:)
-    raise unless power.in? @@LEVELS
-    raise unless interest.in? @@LEVELS
+    raise unless power.in? @@LEVELS and interest.in? @@LEVELS
 
     case power
       when :high
