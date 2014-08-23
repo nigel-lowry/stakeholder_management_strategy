@@ -12,5 +12,8 @@ describe StakeholderManagementStrategy do
     specify { expect { StakeholderManagementStrategy.strategy power: nil, interest: nil }.to raise_error }
 
     specify { expect { StakeholderManagementStrategy.strategy power: :no, influence: :no }.to raise_error }
+
+    specify { expect { StakeholderManagementStrategy.strategy power: :no, interest: :low }.to raise_error }
+    specify { expect { StakeholderManagementStrategy.strategy power: :low, interest: :no }.to raise_error }
   end
 end
