@@ -1,9 +1,11 @@
 require "stakeholder_management_strategy/version"
 
+@@LEVELS = [:no, :some, :high]
+
 module StakeholderManagementStrategy
   def self.strategy(power:, interest:)
-    raise unless power.in? [:no, :some, :high]
-    raise unless interest.in? [:no, :some, :high]
+    raise unless power.in? @@LEVELS
+    raise unless interest.in? @@LEVELS
 
     return :ignore if power == :no and interest == :no
     return :keep_informed if power == :no and (interest == :some or interest == :high)
