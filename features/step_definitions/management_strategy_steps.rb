@@ -1,5 +1,7 @@
+require 'active_support/all'
+
 CAPTURE_A_WORD = Transform /^(.*)$/ do |level|
-  level.downcase.to_sym
+  level.delete(',').downcase.underscore.to_sym
 end
 
 Given /^the stakeholder has (#{CAPTURE_A_WORD}) power\/influence$/ do |p|
