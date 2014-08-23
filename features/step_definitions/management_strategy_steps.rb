@@ -6,7 +6,7 @@ Given /^the stakeholder has (#{CAPTURE_A_WORD}) power\/influence$/ do |p|
   @power = p
 end
 
-And /^they have (#{CAPTURE_A_WORD}) interest in the project$/ do |i|
+And /^(#{CAPTURE_A_WORD}) interest in the project$/ do |i|
   @interest = i
 end
 

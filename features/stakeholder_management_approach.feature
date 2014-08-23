@@ -6,7 +6,7 @@ Feature: Management approach
 
   Scenario Outline: Management strategy
     Given the stakeholder has <Power> power/influence
-      And they have <Interest> interest in the project
+      And <Interest> interest in the project
     Then the management strategy should be <Strategy>
 
     Examples:
