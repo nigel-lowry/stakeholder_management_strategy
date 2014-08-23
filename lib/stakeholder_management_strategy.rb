@@ -5,7 +5,7 @@ module StakeholderManagementStrategy
   @@LEVELS = [:no, :some, :high]
 
   def self.strategy(power:, interest:)
-    raise unless power.in? @@LEVELS and interest.in? @@LEVELS
+    raise unless [power, interest].all? {|dimension| dimension.in? @@LEVELS }
 
     case power
       when :high
