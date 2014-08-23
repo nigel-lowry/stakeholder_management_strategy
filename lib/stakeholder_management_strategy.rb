@@ -8,11 +8,25 @@ module StakeholderManagementStrategy
     raise unless power.in? @@LEVELS
     raise unless interest.in? @@LEVELS
 
-    return :ignore if power == :no and interest == :no
-    return :keep_informed if power == :no and interest != :no
-    return :keep_onside if power == :some
-    return :watch if power == :high and interest == :no
-    return :keep_satisfied if power == :high and interest == :some
-    return :constant_active_management if power == :high and interest == :high
+    case power
+      when :high
+        case interest
+          when :no
+            :watch
+          when :some
+            :keep_satisfied
+          when :high
+            :constant_active_management
+        end
+      when :some
+        :keep_onside
+      when :no
+        case interest
+          when :no
+            :ignore
+          else
+            :keep_informed
+        end
+    end
   end
 end
