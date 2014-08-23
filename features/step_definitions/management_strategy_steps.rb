@@ -1,11 +1,15 @@
-Given(/^the stakeholder has "([^"]*)" power\/influence$/) do |p|
-  power = p
+CAPTURE_A_WORD = Transform /^(.*)$/ do |level|
+  level.downcase.to_sym
 end
 
-And(/^they have "([^"]*)" interest in the project$/) do |i|
-  interest = i
+Given /^the stakeholder has (#{CAPTURE_A_WORD}) power\/influence$/ do |p|
+  @power = p
 end
 
-Then(/^the management strategy should be "([^"]*)"$/) do |s|
-  expect(StakeholderManagementStrategy.strategy(power: power, interest: interest)).to eq(s)
+And /^they have (#{CAPTURE_A_WORD}) interest in the project$/ do |i|
+  @interest = i
+end
+
+Then /^the management strategy should be (#{CAPTURE_A_WORD})$/ do |s|
+  expect(StakeholderManagementStrategy.strategy(power: @power, interest: @interest)).to eq(s)
 end
