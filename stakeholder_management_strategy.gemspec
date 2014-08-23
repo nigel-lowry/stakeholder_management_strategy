@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = StakeholderManagementStrategy::VERSION
   spec.authors       = ["Nigel Lowry"]
   spec.email         = ["nigel-lowry@ultra.eclipse.co.uk"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Small gem to tell you what stakeholder management strategy to use given a stakeholder's power/influence and interest.}
+  spec.description   = %q{Implements the power/interest grid as laid out within the BCS ISEB International Diploma in Business Analysis syllabus.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
